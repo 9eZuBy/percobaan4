@@ -254,6 +254,19 @@
         .float-btn:hover { transform: scale(1.1); }
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
+        .register-section { background: linear-gradient(to bottom, var(--bg-dark), #131c31); }
+.form-group { margin-bottom: 20px; }
+.label { display: block; margin-bottom: 5px; font-size: 0.95rem; color: var(--text-gray); }
+.form-control { padding: 14px 20px; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: transparent; color: white; transition: border-color 0.3s ease; }
+.form-control:focus { border-color: var(--primary); outline: none; }
+
+.btn-primary[type="submit"] {
+    width: 100%;
+    padding: 16px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
     </style>
 </head>
 <body>
@@ -323,6 +336,35 @@
             </div>
         </div>
     </section>
+
+    <section id="register" class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Daftar Sekarang</h2>
+                <p>Mulai belajar langsung dengan langkah-langkah sederhana.</p>
+            </div>
+
+            <form id="registerForm" action="#" method="post" class="reveal delay-100">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Alamat Email</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Daftar Sekarang</button>
+            </form>
+        </div>
+    </section>
+
 
     <section id="fleksibel" class="section-padding" style="background: linear-gradient(to bottom, var(--bg-dark), #131c31);">
         <div class="container">
