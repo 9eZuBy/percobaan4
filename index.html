@@ -254,7 +254,43 @@
         .float-btn:hover { transform: scale(1.1); }
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        .register-section { background: linear-gradient(to bottom, var(--bg-dark), #131c31); }
+/* --- MODAL --- */
+.modal { 
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 999; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Fallback color */
+    backdrop-filter: blur(5px); /* For Safari 13.1+ */
+}
+
+.modal-content {
+    background-color: #2c3e50;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 40px;
+    border-radius: 8px;
+    width: 90%; /* Could be more or less, depending on screen size */
+    max-width: 500px;
+}
+
+.close {
+    color: #f1f1f1;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .form-group { margin-bottom: 20px; }
 .label { display: block; margin-bottom: 5px; font-size: 0.95rem; color: var(--text-gray); }
 .form-control { padding: 14px 20px; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: transparent; color: white; transition: border-color 0.3s ease; }
@@ -337,35 +373,6 @@
         </div>
     </section>
 
-    <section id="register" class="section-padding">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>Daftar Sekarang</h2>
-                <p>Mulai belajar langsung dengan langkah-langkah sederhana.</p>
-            </div>
-
-            <form id="registerForm" action="#" method="post" class="reveal delay-100">
-                <div class="form-group">
-                    <label for="name">Nama Lengkap</label>
-                    <input type="text" id="name" name="name" class="form-control" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Alamat Email</label>
-                    <input type="email" id="email" name="email" class="form-control" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" class="form-control" required>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Daftar Sekarang</button>
-            </form>
-        </div>
-    </section>
-
-
     <section id="fleksibel" class="section-padding" style="background: linear-gradient(to bottom, var(--bg-dark), #131c31);">
         <div class="container">
             <div class="section-header reveal">
@@ -391,6 +398,30 @@
             </div>
         </div>
     </section>
+
+<div id="registerModal" class="modal">
+    <div class="modal-content reveal delay-100">
+        <span class="close">&times;</span>
+        <form id="registerForm" action="#" method="post">
+            <div class="form-group">
+                <label for="name">Nama Lengkap</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Alamat Email</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Daftar Sekarang</button>
+        </form>
+    </div>
+</div>
 
     <section id="pricing" class="section-padding pricing-section">
         <div class="container">
@@ -549,6 +580,32 @@
         
         const header = document.getElementById("header");
         window.addEventListener("scroll", () => { header.classList.toggle("scrolled", window.scrollY > 50); });
+
+// Get the modal
+var modal = document.getElementById("registerModal");
+
+// Get the button that opens the modal
+var btn = document.querySelector(".header-btn-desktop, .header-btn-mobile");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
     </script>
 </body>
 </html>
